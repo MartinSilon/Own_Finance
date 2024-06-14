@@ -1,0 +1,54 @@
+#login{
+    background-color: $white;
+    background-size: cover;
+    height: 100vh;
+    .logo{
+        width: 15vw;
+    }
+    .con-window{
+        .row{
+            .col-12{
+                height: 100vh;
+                .window{
+                    label{
+                        color: $blue;
+                        font-size: 1.2em;
+                        font-family: medium;
+                    }
+                    input{
+                        border: 1px solid $blue;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    #login{
+        //background-image: linear-gradient(rgba(255,255,255, 0.3), rgba(255,255,255, 0.3)), url("/images/login.png");
+        background-color: $white;
+        background-size: cover;
+        height: 100vh;
+        .logo{
+            width: 80vw;
+        }
+        .con-window{
+            .row{
+                .col-12{
+                    height: 100vh;
+                    .window{
+                        width: 75%;
+                        label{
+                            color: $blue;
+                            font-size: 1.2em;
+                            font-family: medium;
+                        }
+                        input{
+                            border: 1px solid $blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

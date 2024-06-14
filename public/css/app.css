@@ -1,0 +1,205 @@
+/* COLORS DEFINITION */
+/* FONT IMPORT */
+@font-face {
+  font-family: "bold";
+  src: url("../fonts/Satoshi-Bold.ttf");
+}
+@font-face {
+  font-family: "medium";
+  src: url("../fonts/Satoshi-Medium.ttf");
+}
+@font-face {
+  font-family: "regular";
+  src: url("../fonts/Satoshi-Regular.ttf");
+}
+/* ANIMATIONS */
+@keyframes alerts {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+#home {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+#home a {
+  text-decoration: none;
+}
+#home .nav-tabs .nav-link {
+  color: #4b5fa8;
+}
+#home .nav-tabs .not-home {
+  width: 25%;
+}
+#home .nav-tabs .home {
+  width: 50%;
+}
+#home .header h1, #home .header h5 {
+  color: #4b5fa8;
+}
+#home .spareMoney .title {
+  color: #4b5fa8;
+}
+#home .spareMoney .card {
+  background-color: transparent;
+  border: 1px solid #4b5fa8;
+  color: #4b5fa8;
+}
+#home .spareMoney .expense-card:hover {
+  background-color: greenyellow;
+  border: 1px solid #4b5fa8;
+  color: #4b5fa8;
+}
+#home .spareMoney .active_card {
+  background-color: greenyellow;
+  border: 1px solid #4b5fa8;
+  color: #4b5fa8;
+}
+#home .spareMoney .nonBtn {
+  border: none;
+  background-color: transparent;
+}
+#home .payment h5 {
+  color: #4b5fa8;
+}
+#home .payment input, #home .payment textarea {
+  font-size: 1.2em;
+  border: 1px solid #4b5fa8;
+  color: #4b5fa8;
+  font-family: medium;
+}
+#home .payment input::placeholder, #home .payment textarea::placeholder {
+  color: #4b5fa8;
+  font-family: regular;
+}
+#home .payment .btn {
+  background-color: #4b5fa8;
+  color: #ffffff;
+  border: 1px solid #4b5fa8;
+  font-size: 1.2em;
+  transition: 0.4s;
+}
+#home .payment .btn:hover {
+  background-color: #4b5fa8;
+  color: #ffffff;
+}
+#home .payment .lastPayment {
+  border: 1px solid #4b5fa8;
+  color: #4b5fa8;
+}
+#home .payment .lastPayment h4 {
+  font-family: medium;
+}
+#home .payment .lastPayment h6 {
+  font-family: regular;
+}
+#home .formulars h3 {
+  color: #4b5fa8;
+}
+#home .formulars table thead th {
+  color: #4b5fa8;
+}
+
+@media screen and (max-width: 400px) {
+  #home .nav-tabs .not-home {
+    width: 50%;
+  }
+  #home .nav-tabs .home {
+    width: 100%;
+  }
+  #home .formulars h3 {
+    color: #4b5fa8;
+  }
+  #home .formulars table thead th {
+    color: #4b5fa8;
+  }
+  #home .formulars table thead td {
+    padding: 0px !important;
+  }
+}
+#nav {
+  background-color: #ffffff;
+}
+#nav .logo {
+  width: 10vw;
+}
+
+@media screen and (max-width: 400px) {
+  #nav {
+    background-color: #ffffff;
+  }
+  #nav .logo {
+    width: 30vw;
+  }
+}
+#login {
+  background-color: #ffffff;
+  background-size: cover;
+  height: 100vh;
+}
+#login .logo {
+  width: 15vw;
+}
+#login .con-window .row .col-12 {
+  height: 100vh;
+}
+#login .con-window .row .col-12 .window label {
+  color: #4b5fa8;
+  font-size: 1.2em;
+  font-family: medium;
+}
+#login .con-window .row .col-12 .window input {
+  border: 1px solid #4b5fa8;
+}
+
+@media screen and (max-width: 400px) {
+  #login {
+    background-color: #ffffff;
+    background-size: cover;
+    height: 100vh;
+  }
+  #login .logo {
+    width: 80vw;
+  }
+  #login .con-window .row .col-12 {
+    height: 100vh;
+  }
+  #login .con-window .row .col-12 .window {
+    width: 75%;
+  }
+  #login .con-window .row .col-12 .window label {
+    color: #4b5fa8;
+    font-size: 1.2em;
+    font-family: medium;
+  }
+  #login .con-window .row .col-12 .window input {
+    border: 1px solid #4b5fa8;
+  }
+}
+* {
+  font-family: regular;
+}
+
+.number {
+  font-family: bold;
+}
+
+.alerts {
+  animation: alerts 5s;
+  opacity: 0;
+}
+
+.logo-login {
+  animation: alerts 3s;
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=app.css.map */

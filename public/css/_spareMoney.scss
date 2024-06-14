@@ -1,0 +1,36 @@
+.header {
+    h1, h5 {
+        color: $blue;
+    }
+}
+
+.spareMoney {
+    .title {
+        color: $blue;
+    }
+
+    .card {
+        background-color: transparent;
+        border: 1px solid $blue;
+        color: $blue;
+    }
+
+    .expense-card {
+        &:hover {
+            background-color: greenyellow;
+            border: 1px solid $blue;
+            color: $blue;
+        }
+    }
+
+    .active_card {
+        background-color: greenyellow;
+        border: 1px solid $blue;
+        color: $blue;
+    }
+
+    .nonBtn {
+        border: none;
+        background-color: transparent;
+    }
+}

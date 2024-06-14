@@ -1,0 +1,39 @@
+.payment {
+    h5 {
+        color: $blue;
+    }
+
+    input, textarea {
+        font-size: 1.2em;
+        border: 1px solid $blue;
+        color: $blue;
+        font-family: medium;
+        &::placeholder {
+            color: $blue;
+            font-family: regular;
+        }
+    }
+
+    .btn {
+        background-color: $blue;
+        color: $white;
+        border: 1px solid $blue;
+        font-size: 1.2em;
+        transition: 0.4s;
+        &:hover {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+
+    .lastPayment {
+        border: 1px solid $blue;
+        color: $blue;
+        h4 {
+            font-family: medium;
+        }
+        h6 {
+            font-family: regular;
+        }
+    }
+}

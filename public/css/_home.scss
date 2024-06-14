@@ -1,0 +1,71 @@
+#home {
+    min-height: 100vh;
+    background-color: $white;
+
+    a {
+        text-decoration: none;
+    }
+
+    .nav-tabs {
+        .nav-link {
+            color: $blue;
+        }
+
+        .not-home {
+            width: 25%;
+        }
+
+        .home {
+            width: 50%;
+        }
+    }
+
+    @import "spareMoney";
+    @import "payment";
+
+    .formulars {
+        h3 {
+            color: $blue;
+        }
+
+        table {
+            thead {
+                th {
+                    color: $blue;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #home {
+        .nav-tabs {
+            .not-home {
+                width: 50%;
+            }
+
+            .home {
+                width: 100%;
+            }
+        }
+
+        .formulars {
+            h3 {
+                color: $blue;
+            }
+
+            table {
+                thead {
+                    th {
+                        color: $blue;
+                    }
+
+                    td {
+                        padding: 0px !important;
+                    }
+                }
+            }
+        }
+    }
+}

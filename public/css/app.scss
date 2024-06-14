@@ -1,0 +1,20 @@
+@import "variables";
+@import "home";
+@import "nav";
+@import "login";
+
+
+*{
+    font-family: regular;
+}
+.number{
+    font-family: bold;
+}
+.alerts {
+    animation: alerts 5s ;
+    opacity: 0;
+}
+.logo-login{
+    animation: alerts 3s ;
+    visibility: hidden;
+}

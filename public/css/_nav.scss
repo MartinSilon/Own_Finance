@@ -1,0 +1,16 @@
+#nav{
+    background-color: $white;
+    .logo{
+        width: 10vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #nav{
+        background-color: $white;
+        .logo{
+            width: 30vw;
+        }
+    }
+}
+
