@@ -5,7 +5,7 @@
     <section id="home" class="pt-1">
 
         {{-- FORM FOR EDITING INCOME --}}
-        <div class="container bg-white rounded px-5 py-5 mt-2 shadow">
+        <div class="container bg-white rounded px-lg-5 py-5 mt-2 shadow">
             <div class="row justify-content-start">
                 <div class="col-md-6">
                     <h3 class="m-0 text-uppercase mb-2 date mb-4">Upraviť prijem:</h3>
@@ -32,6 +32,7 @@
                         <tr class="head-row">
                             <th>Meno</th>
                             <th>Suma</th>
+                            <th>Deň</th>
                             <th>Akcie</th>
                         </tr>
                         </thead>
@@ -41,6 +42,7 @@
                             <tr>
                                 <td class="align-middle">{{ $item->name }}</td>
                                 <td class="date align-middle">{{ $item->income }} €</td>
+                                <td class="date align-middle">{{ $item->date }}.</td>
 
                                 <td class="align-middle">
                                     <a href="{{ route('income.edit', $item->id) }}" class="btn-outline-secondary btn-sm text-uppercase fw-bold py-2">Upraviť</a>

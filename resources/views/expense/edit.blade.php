@@ -5,7 +5,7 @@
     <section id="home" class="pt-1">
 
         {{-- FORM FOR EDITING EXPENSE --}}
-        <div class="container bg-white rounded px-5 py-5 payment mt-2 shadow">
+        <div class="container bg-white rounded px-lg-5 py-lg-5 py-4 payment mt-2 shadow">
             <div class="row justify-content-start">
                 <div class="col-md-6">
                     <h3 class="m-0 text-uppercase mb-2 date mb-4">Upraviť mesačnú platbu:</h3>
@@ -16,6 +16,7 @@
                         @method('PUT')
                         <input class="form-control mb-3 date" type="text" name="name" placeholder="Netflix" value="{{ $expense->name }}" required>
                         <input class="form-control mb-3 date" type="text" name="price" placeholder="8.99" value="{{ $expense->price }}" required>
+                        <input class="form-control mb-3 date" type="number" name="date" value="{{ $expense->date }}" min="1" max="30">
 
                         <button class="btn w-100 mt-3 text-uppercase btn-primary" type="submit">Upraviť</button>
                     </form>
@@ -29,6 +30,7 @@
                         <tr class="head-row">
                             <th>Meno</th>
                             <th>Suma</th>
+                            <th>Deň</th>
                             <th>Akcie</th>
                         </tr>
                         </thead>
@@ -38,6 +40,7 @@
                             <tr>
                                 <td class="align-middle">{{ $item->name }}</td>
                                 <td class="date align-middle">{{ $item->price }} €</td>
+                                <td class="date align-middle">{{ $item->date ? $item->date."." : "-" }}</td>
 
                                 <td class="align-middle">
                                     <a href="{{ route('expenses.edit', $item->id) }}" class="btn-outline-secondary btn-sm text-uppercase fw-bold py-2">Upraviť</a>

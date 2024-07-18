@@ -1,8 +1,8 @@
 <div id="nav">
-    <div class="container-fluid py-3">
+    <div class="container-fluid py-lg-3 pb-0 pt-2">
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <img class="img-fluid logo" src="{{ asset('/images/logo.svg') }}">
+                <a href="{{  route('home') }}"><img class="img-fluid logo" src="{{ asset('/images/logo.svg') }}"></a>
             </div>
         </div>
     </div>
@@ -10,3 +10,4 @@
         @include('components/errors')
     </div>
 </div>
+

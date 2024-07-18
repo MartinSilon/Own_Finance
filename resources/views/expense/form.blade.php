@@ -8,7 +8,11 @@
             <form action="{{ route('expenses.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input class="form-control mb-3 date" type="text" name="name" placeholder="Netflix" value="{{ old('name') }}" required>
+
                 <input class="form-control mb-3 date" type="text" name="price" placeholder="8.99" value="{{ old('price') }}" required>
+
+                <label>Deň v mesiaci:</label>
+                <input class="form-control mb-3 date" type="number" name="date" value="null" min="0" max="30">
 
                 <button class="btn w-100 mt-3 text-uppercase" type="submit">Odoslať</button>
             </form>
@@ -22,18 +26,20 @@
                 <tr class="head-row">
                     <th>Meno</th>
                     <th>Suma</th>
+                    <th>Deň</th>
                     <th>Akcie</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 @foreach($expenses as $item)
-                    <tr>
+                    <tr class="h-100">
                         <td class="align-middle">{{ $item->name }}</td>
                         <td class="date align-middle">{{ $item->price }} €</td>
+                        <td class="date align-middle">{{ $item->date ? $item->date."." : "-" }}</td>
 
                         {{-- Edit and Delete buttons --}}
-                        <td class="align-middle d-flex align-items-center">
+                        <td class="align-middle d-flex align-items-center h-100 py-3">
                             <a href="{{ route('expenses.edit', $item->id) }}" class="btn-outline-secondary btn-sm text-uppercase py-2">Upraviť</a>
                             <form action="{{ route('expenses.destroy', $item->id) }}" method="post" class="d-inline">
                                 @csrf

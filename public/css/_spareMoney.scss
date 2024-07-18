@@ -15,22 +15,38 @@
         color: $blue;
     }
 
-    .expense-card {
-        &:hover {
-            background-color: greenyellow;
-            border: 1px solid $blue;
-            color: $blue;
-        }
-    }
-
     .active_card {
-        background-color: greenyellow;
-        border: 1px solid $blue;
-        color: $blue;
+        background: rgb(204,224,244);
+        background: linear-gradient(90deg, rgba(97,124,224,1) 71%, rgba(75,95,168,1) 100%);
+        border: 1px solid transparent;
+        color: $white;
     }
 
     .nonBtn {
         border: none;
-        background-color: transparent;
+        background-color: transparent !important;
+    }
+
+}
+
+
+#sumBanks{
+    background: rgb(204,224,244);
+    background: linear-gradient(90deg, rgba(97,124,224,1) 71%, rgba(75,95,168,1) 100%);
+    h5,h2{
+        color: $white;
+    }
+    .card{
+        border: $white 1px solid;
+        height: 15vh;
+
+    }
+    .accordion-body{
+        background-color: $blue;
+    }
+    .accordion-button{
+        background-color: $blue;
+        color: $blue;
     }
 }
+

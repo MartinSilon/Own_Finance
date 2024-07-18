@@ -1,6 +1,7 @@
 @extends('components.head')
 
 @section('body')
+
     @include('components/nav')
     <section id="home" class="pt-1">
 
@@ -32,12 +33,17 @@
                             </a>
                         </li>
                     </ul>
-
                     {{-- ---- TAB CONTENT ---- --}}
                     <div class="tab-content" id="myTabContent0">
                         <!-- Home Content -->
                         <div class="tab-pane fade show active" id="home0" role="tabpanel" aria-labelledby="home-tab0">
                             @include('components.spareMoney')
+{{--                            @include('charts.chart')--}}
+{{--                            @include('components.note')--}}
+                            @include('components.details')
+                            @include('bank.sum')
+                            @include('expense.show')
+                            @include('payment.show')
                         </div>
                         <!-- Payment Content -->
                         <div class="tab-pane fade" id="payment0" role="tabpanel" aria-labelledby="payment-tab0">
@@ -47,6 +53,7 @@
                         <div class="tab-pane fade" id="settings0" role="tabpanel" aria-labelledby="settings-tab0">
                             @include('expense.form')
                             @include('income.form')
+                            @include('bank.form')
                         </div>
                     </div>
                 </div>

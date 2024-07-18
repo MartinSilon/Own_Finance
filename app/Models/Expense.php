@@ -13,6 +13,7 @@ class Expense extends Model
         'id',
         'name',
         'price',
+        'date',
         'paid',
         'updated_at',
     ];

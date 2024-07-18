@@ -1,5 +1,5 @@
 {{-- ---- LIST OF MONTHLY EXPENSES ---- --}}
-<div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
+<div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow {{ $paidExpensesCount == $allExpensesCount ? 'd-none d-md-block' : "" }}">
     <div class="row">
         <div class="col-12">
             <h5 class="m-0 text-uppercase mb-2 title">Mesačné výdavky: ({{$paidExpensesCount}}/{{$allExpensesCount}})</h5>
@@ -14,10 +14,15 @@
                 <input type="hidden" name="paid" value="0">
                 <button type="submit" class="w-100 h-100 nonBtn">
                     <div class="card expense-card text-center pt-3 pb-1 px-4 h-100 {{ $item->paid ? 'active_card' : "" }}">
+
                         <h3 class="card-title">{{ $item->name }}</h3>
-                        <h5 class="number">{{ $item->price }} €</h5>
-                        <h6 class="pt-3">
-                            {{ $item->paid ? $item->paid : "Nezaplatene" }}
+                        <h5 class="">{{ $item->price }} €</h5>
+                        <h6 class="pt-3 m-0">
+                            @isset($item->date)
+                                {{ $item->paid ?: "Nezaplatené (do " . $item->date . ($notFullDate ?? '') . ")" }}
+                            @else
+                                Nezaplatené
+                            @endisset
                         </h6>
                     </div>
                 </button>

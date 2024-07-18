@@ -2,8 +2,14 @@
 
 namespace App\Console;
 
+use App\Http\Requests\CreateExpenseRequest;
+use App\Models\Bank;
+use App\Models\Expense;
+use App\Models\Income;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Payment;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -12,14 +18,31 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('expenses:update')->monthlyOn(1, '00:00');
+
+        // POSIELANIE TRADING KAZDE 2 TYZDNE
+        $schedule->call(function () {
+            $currentDate = Carbon::now();
+            $bank = Bank::where('name', 'Trading 212')->first();
+            $expense = Expense::where('name', 'Trading 212')->where('paid', null)->first();
+
+            if ($expense && $bank) {
+                // Update the expense's paid date
+                $expense->update(['paid' => $currentDate]);
+
+                // Update the bank's money
+                $activeMoney = $bank->money;
+                $newMoney = $activeMoney + 50;
+                $bank->update(['money' => $newMoney]);
+            }
+         })->everyMinute();
+//        })->twiceMonthly(29, '8:50')->saturdays();
     }
 
 
     /**
      * Register the commands for the application.
      */
-    protected function commands(): void
+    protected function commands()
     {
         $this->load(__DIR__.'/Commands');
 

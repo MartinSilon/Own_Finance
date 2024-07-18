@@ -2,7 +2,8 @@
 @import "home";
 @import "nav";
 @import "login";
-
+@import "spareMoney";
+@import "charts";
 
 *{
     font-family: regular;
@@ -18,3 +19,46 @@
     animation: alerts 3s ;
     visibility: hidden;
 }
+
+
+.swipe-container {
+    overflow: hidden;
+}
+
+.swipe-item {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.card-content {
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.delete-button {
+    position: absolute;
+    right: -50px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    background-color: $blue;
+    transition: right 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.swipe-item.swiped .delete-button {
+    right: 0;
+    opacity: 1;
+}
+
+.swipe-item.swiped .card-content {
+    padding-right: 50px; /* Vytvoríme miesto pre tlačidlo pri swipe */
+}
+
+
+
+
+

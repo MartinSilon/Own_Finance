@@ -9,6 +9,7 @@
 
     <!-- Title -->
     <title>{{'Finance'}}</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('/images/logo.svg')}}">
 
     <!-- CSS AND JAVASCRIPT -->
     <link href="{{ url('css/app.css') }}" rel="stylesheet">

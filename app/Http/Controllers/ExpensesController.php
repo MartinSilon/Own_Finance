@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateExpenseRequest;
+use App\Models\Bank;
 use App\Models\Expense;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class ExpensesController extends Controller
@@ -54,8 +56,24 @@ class ExpensesController extends Controller
             'paid' => 'required',
         ]);
 
+        $bank = Bank::where('name', $expense->name)->first();
+
+        if($bank && $expense->name == $bank->name){
+            $activeMoney = $bank->money;
+            $money = $activeMoney + $expense->price;
+            $bank->update(['money' => $money]);
+        }
+
         $incomingFields['paid'] = date('Y-m-d');
         $expense->update($incomingFields);
+
+        //Vytvorenie Platby
+        $paymentPrice = -$expense->price;
+        Payment::create([
+            'name' => 'Mesačný príkaz: ' . $expense->name,
+            'price' => $paymentPrice
+        ]);
+
 
         return redirect()
             ->route('home');

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* COLORS DEFINITION */
 /* FONT IMPORT */
 @font-face {
@@ -34,7 +35,7 @@
   text-decoration: none;
 }
 #home .nav-tabs .nav-link {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 #home .nav-tabs .not-home {
   width: 25%;
@@ -43,57 +44,71 @@
   width: 50%;
 }
 #home .header h1, #home .header h5 {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 #home .spareMoney .title {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 #home .spareMoney .card {
   background-color: transparent;
-  border: 1px solid #4b5fa8;
-  color: #4b5fa8;
-}
-#home .spareMoney .expense-card:hover {
-  background-color: greenyellow;
-  border: 1px solid #4b5fa8;
-  color: #4b5fa8;
+  border: 1px solid #5a72cd;
+  color: #5a72cd;
 }
 #home .spareMoney .active_card {
-  background-color: greenyellow;
-  border: 1px solid #4b5fa8;
-  color: #4b5fa8;
+  background: rgb(204, 224, 244);
+  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
+  border: 1px solid transparent;
+  color: #ffffff;
 }
 #home .spareMoney .nonBtn {
   border: none;
-  background-color: transparent;
+  background-color: transparent !important;
+}
+#home #sumBanks {
+  background: rgb(204, 224, 244);
+  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
+}
+#home #sumBanks h5, #home #sumBanks h2 {
+  color: #ffffff;
+}
+#home #sumBanks .card {
+  border: #ffffff 1px solid;
+  height: 15vh;
+}
+#home #sumBanks .accordion-body {
+  background-color: #5a72cd;
+}
+#home #sumBanks .accordion-button {
+  background-color: #5a72cd;
+  color: #5a72cd;
 }
 #home .payment h5 {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 #home .payment input, #home .payment textarea {
   font-size: 1.2em;
-  border: 1px solid #4b5fa8;
-  color: #4b5fa8;
+  border: 1px solid #5a72cd;
+  color: #5a72cd;
   font-family: medium;
 }
 #home .payment input::placeholder, #home .payment textarea::placeholder {
-  color: #4b5fa8;
+  color: #5a72cd;
   font-family: regular;
 }
 #home .payment .btn {
-  background-color: #4b5fa8;
+  background-color: #5a72cd;
   color: #ffffff;
-  border: 1px solid #4b5fa8;
+  border: 1px solid #5a72cd;
   font-size: 1.2em;
   transition: 0.4s;
 }
 #home .payment .btn:hover {
-  background-color: #4b5fa8;
+  background-color: #5a72cd;
   color: #ffffff;
 }
 #home .payment .lastPayment {
-  border: 1px solid #4b5fa8;
-  color: #4b5fa8;
+  border: 1px solid #5a72cd;
+  color: #5a72cd;
 }
 #home .payment .lastPayment h4 {
   font-family: medium;
@@ -102,10 +117,10 @@
   font-family: regular;
 }
 #home .formulars h3 {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 #home .formulars table thead th {
-  color: #4b5fa8;
+  color: #5a72cd;
 }
 
 @media screen and (max-width: 400px) {
@@ -116,10 +131,10 @@
     width: 100%;
   }
   #home .formulars h3 {
-    color: #4b5fa8;
+    color: #5a72cd;
   }
   #home .formulars table thead th {
-    color: #4b5fa8;
+    color: #5a72cd;
   }
   #home .formulars table thead td {
     padding: 0px !important;
@@ -129,7 +144,7 @@
   background-color: #ffffff;
 }
 #nav .logo {
-  width: 10vw;
+  width: 5vw;
 }
 
 @media screen and (max-width: 400px) {
@@ -137,7 +152,7 @@
     background-color: #ffffff;
   }
   #nav .logo {
-    width: 30vw;
+    width: 15vw;
   }
 }
 #login {
@@ -152,12 +167,12 @@
   height: 100vh;
 }
 #login .con-window .row .col-12 .window label {
-  color: #4b5fa8;
+  color: #5a72cd;
   font-size: 1.2em;
   font-family: medium;
 }
 #login .con-window .row .col-12 .window input {
-  border: 1px solid #4b5fa8;
+  border: 1px solid #5a72cd;
 }
 
 @media screen and (max-width: 400px) {
@@ -176,12 +191,65 @@
     width: 75%;
   }
   #login .con-window .row .col-12 .window label {
-    color: #4b5fa8;
+    color: #5a72cd;
     font-size: 1.2em;
     font-family: medium;
   }
   #login .con-window .row .col-12 .window input {
-    border: 1px solid #4b5fa8;
+    border: 1px solid #5a72cd;
+  }
+}
+.header h1, .header h5 {
+  color: #5a72cd;
+}
+
+.spareMoney .title {
+  color: #5a72cd;
+}
+.spareMoney .card {
+  background-color: transparent;
+  border: 1px solid #5a72cd;
+  color: #5a72cd;
+}
+.spareMoney .active_card {
+  background: rgb(204, 224, 244);
+  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
+  border: 1px solid transparent;
+  color: #ffffff;
+}
+.spareMoney .nonBtn {
+  border: none;
+  background-color: transparent !important;
+}
+
+#sumBanks {
+  background: rgb(204, 224, 244);
+  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
+}
+#sumBanks h5, #sumBanks h2 {
+  color: #ffffff;
+}
+#sumBanks .card {
+  border: #ffffff 1px solid;
+  height: 15vh;
+}
+#sumBanks .accordion-body {
+  background-color: #5a72cd;
+}
+#sumBanks .accordion-button {
+  background-color: #5a72cd;
+  color: #5a72cd;
+}
+
+.chart canvas {
+  width: 25% !important;
+  height: 100% !important;
+}
+
+@media screen and (max-width: 400px) {
+  .chart canvas {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 * {
@@ -200,6 +268,43 @@
 .logo-login {
   animation: alerts 3s;
   visibility: hidden;
+}
+
+.swipe-container {
+  overflow: hidden;
+}
+
+.swipe-item {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.card-content {
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.delete-button {
+  position: absolute;
+  right: -50px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  background-color: #5a72cd;
+  transition: right 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.swipe-item.swiped .delete-button {
+  right: 0;
+  opacity: 1;
+}
+
+.swipe-item.swiped .card-content {
+  padding-right: 50px; /* Vytvoríme miesto pre tlačidlo pri swipe */
 }
 
 /*# sourceMappingURL=app.css.map */
