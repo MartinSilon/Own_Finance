@@ -1,10 +1,22 @@
 @import "variables";
 @import "home";
 @import "nav";
-@import "login";
+@import "payment";
+@import "expenses";
 @import "spareMoney";
-@import "charts";
 
+@import "login";
+
+@import "edit";
+
+body{
+    overflow-x: hidden;
+    width: 100vw;
+    background-color: $black !important;
+}
+.row{
+    --bs-gutter-x: 0rem !important;
+}
 *{
     font-family: regular;
 }

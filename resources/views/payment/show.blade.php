@@ -1,32 +1,23 @@
-{{-- ---- RECENT PAYMENTS ---- --}}
-<div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
-    <div class="row">
-        <div class="col-12">
-            <h5 class="m-0 text-uppercase mb-2 title">Posledné platby:</h5>
-        </div>
-    </div>
-
-    {{-- ---- ROW FOR CARDS ---- --}}
-    <div class="row">
+ <div class="row paymentsShow mt-5 mx-3">
         @if($payments->isNotEmpty())
             @foreach($payments as $item)
+
                 <div class="col-12 swipe-container">
-                    <div class="card mb-2 swipe-item">
+                    <div class="item mb-2 swipe-item">
                         <div class="d-flex align-items-center justify-content-between position-relative">
 
                             {{-- Obsah karty --}}
                             <div class="card-content w-100">
-                                <div class="card-header">
-                                    <h6 class="m-0">{{ \Carbon\Carbon::parse($item->created_at)->format('j.n.Y') }}</h6>
-                                </div>
                                 <div class="card-body p-0 px-3 py-1">
-                                    <h5 class="{{ $item->price > 0 ? 'text-success' : 'text-danger' }}">
-                                        {{ $item->name }}
-                                    </h5>
-                                    <h6 class="">Suma:
-                                        <span class=" {{ $item->price > 0 ? 'text-success' : 'text-danger' }}">
-                                {{ $item->price }} €
-                            </span>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h5>{{ $item->name }}</h5>
+                                        <h6 class="m-0">{{ \Carbon\Carbon::parse($item->created_at)->format('j.n.Y') }}</h6>
+
+                                    </div>
+                                    <h6 class="">
+                                        <span class=" {{ $item->price > 0 ? 'pink' : 'pink' }}">
+                                            {{ $item->price }} €
+                                        </span>
                                     </h6>
                                 </div>
                             </div>
@@ -35,7 +26,7 @@
                             <form action="{{ route('deletePayment', $item->id) }}" method="post" class="d-inline delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="border-0 delete-button">
+                                <button type="submit" class=" border-0 delete-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                                     </svg>
@@ -46,11 +37,13 @@
                 </div>
             @endforeach
         @else
-            <p class="fs-5 text-center">Tento týždeň neprebehli žiadne platby.</p>
+            <div class="item py-4">
+                <p class="text-center">Tento týždeň neprebehli žiadne platby.</p>
+            </div>
+
         @endif
 
     </div>
-</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

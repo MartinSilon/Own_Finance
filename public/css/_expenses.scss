@@ -1,0 +1,21 @@
+.expensesShow{
+    background-color: transparent;
+    button{
+        border: none;
+        background-color: transparent;
+
+        .item{
+            border-radius: 0.8em;
+        }
+        h3, h6{
+            color: $white;
+            small{
+                color: $pink;
+            }
+        }
+        h5{
+            color: $pink;
+        }
+    }
+
+}

@@ -1,7 +1,21 @@
 /* COLORS DEFINITION */
 $white: #ffffff;
+$grey: #202020FF;
 $blue: #5a72cd;
 $iceblue: #8595FF;
+$black: #000000;
+$pink: #b3baff;
+
+.green{
+    color: #99d98c !important;
+}
+.red{
+    color: #ff6961 !important;
+
+}
+.pink{
+    color: $pink !important;
+}
 
 /* FONT IMPORT */
 @font-face {

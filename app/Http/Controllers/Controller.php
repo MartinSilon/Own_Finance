@@ -10,9 +10,10 @@ use App\Models\Payment;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class Controller extends BaseController
@@ -24,13 +25,14 @@ class Controller extends BaseController
     // ---- COUNT PAID EXPENSES ----
     protected function paidExpenses()
     {
-        return $paidExpensesCount = Expense::whereNotNull('paid')->count('name');
+        return $paidExpensesCount = Expense::where('user_id', Auth::id())->whereNotNull('paid')->count('name');
     }
 
     // ---- GET 3 MOST OFTEN PAYMENTS ----
     protected function mostOftenPayments()
     {
         return $topPayments = Payment::select('name', DB::raw('count(*) as count'), DB::raw('sum(price) as total_price'))
+            ->where('user_id', Auth::id())
             ->where('created_at', '>=', Carbon::now()->startOfMonth())
             ->where('name', 'not like', '%Príjem%')
             ->where('name', 'not like', 'Mesačný príkaz%')
@@ -44,19 +46,21 @@ class Controller extends BaseController
     protected function averagePlus()
     {
         $currentDate = Carbon::now();
-        $income = Income::sum('income');
-        $paymentsPlus = Payment::where('price', '>', 0)
+        $income = Income::where('user_id', Auth::id())->sum('income');
+        $paymentsPlus = Payment::where('user_id', Auth::id())
+            ->where('price', '>', 0)
             ->where('name', 'not like', '%Príjem%')
             ->whereYear('created_at', Carbon::now()->year)
             ->whereMonth('created_at', Carbon::now()->month)
             ->sum('price');
-        $paymentsMinus = Payment::where('price', '<', 0)
+        $paymentsMinus = Payment::where('user_id', Auth::id())
+            ->where('price', '<', 0)
             ->where('name', 'not like', '%Príjem%')
             ->whereYear('created_at', Carbon::now()->year)
             ->whereMonth('created_at', Carbon::now()->month)
             ->sum('price');
 
-        $expense = Expense::sum('price');
+        $expense = Expense::where('user_id', Auth::id())->sum('price');
         $average = ($paymentsPlus + $income - $expense + $paymentsMinus) / $currentDate->daysInMonth;
         return number_format($average, 2);
     }
@@ -65,9 +69,10 @@ class Controller extends BaseController
     // ---- SUM OF MONEY WHICH ARE LEFT ----
     protected function moneyLeft()
     {
-        $income = Income::sum('income');
-        $expense = Expense::sum('price');
-        $moneyLeft = Payment::where('created_at', '>=', Carbon::now()->startOfMonth())
+        $income = Income::where('user_id', Auth::id())->sum('income');
+        $expense = Expense::where('user_id', Auth::id())->sum('price');
+        $moneyLeft = Payment::where('user_id', Auth::id())
+            ->where('created_at', '>=', Carbon::now()->startOfMonth())
             ->where('name', 'not like', 'Mesačný príkaz%')
             ->where('name', 'not like', 'Príjem%')
             ->sum('price');
@@ -79,12 +84,16 @@ class Controller extends BaseController
     // ---- SUM OF MONEY WHICH ARE SPENT ----
     protected function moneySpent()
     {
-        return $moneyLeft = Payment::where('created_at', '>=', Carbon::now()->startOfMonth())->where('price', '<=', '0')
+        return $moneyLeft = Payment::where('user_id', Auth::id())
+            ->where('created_at', '>=', Carbon::now()
+                ->startOfMonth())->where('price', '<=', '0')
             ->sum('price');
     }
     protected function moneyEarned()
     {
-        return $moneyEarned = Payment::where('created_at', '>=', Carbon::now()->startOfMonth())->where('price', '>=', '0')
+        return $moneyEarned = Payment::where('user_id', Auth::id())
+            ->where('created_at', '>=', Carbon::now()->startOfMonth())
+            ->where('price', '>=', '0')
             ->sum('price');
     }
 
@@ -93,16 +102,17 @@ class Controller extends BaseController
     public function index()
     {
 
-        // Payments
-        $payments = Payment::where('created_at', '>=', Carbon::now()->startOfWeek())->orderBy('created_at', 'desc')->get();
-        $topPayments = $this->mostOftenPayments();
-        $saving = Payment::where('name', 'like', 'Konto ->%')->sum('price');
 
         // Payments
-        $banks = Bank::whereNull('payment')->get();
+        $payments = Payment::where('user_id', Auth::id())->where('created_at', '>=', Carbon::now()->startOfWeek())->orderBy('created_at', 'desc')->get();
+        $topPayments = $this->mostOftenPayments();
+        $saving = Payment::where('user_id', Auth::id())->where('name', 'like', 'Konto ->%')->sum('price');
+
+        // Payments
+        $banks = Bank::where('user_id', Auth::id())->whereNull('payment')->get();
 
         // Note
-        $note = Note::first();
+        $note = Note::where('user_id', Auth::id())->first();
 
         // Money
         $moneyLeft = $this->moneyLeft();
@@ -111,21 +121,23 @@ class Controller extends BaseController
 
         // Expenses
         $expensesStartDate = Carbon::parse('2024-06-04');
-        $expenses = Expense::where('created_at', '>=', $expensesStartDate)->get();
-        $expensesSum = Expense::where('created_at', '>=', $expensesStartDate)->sum('price');
+        $expenses = Expense::where('user_id', Auth::id())->where('created_at', '>=', $expensesStartDate)->get();
+        $expensesSum = Expense::where('user_id', Auth::id())->where('created_at', '>=', $expensesStartDate)->sum('price');
         $paidExpensesCount = $this->paidExpenses();
-        $allExpensesCount = Expense::count();
+        $allExpensesCount = Expense::where('user_id', Auth::id())->count();
 
         $currentDate = Carbon::now();
         $notFullDate = $currentDate->format('.m.Y');
 
         // Income
-        $income = Income::all();
-        $incomeCount = Income::count();
-        $incomeSum = Income::sum('income');
+        $income = Income::where('user_id', Auth::id())->get();
+        $incomeCount = Income::where('user_id', Auth::id())->count();
+        $incomeSum = Income::where('user_id', Auth::id())->sum('income');
 
         // Average
         $averagePlus = $this->averagePlus();
+
+        $user_id = Auth::id();
 
         return view('home', compact(
             'topPayments', 'moneyLeft', 'expenses', 'expensesSum', 'notFullDate',
@@ -133,7 +145,33 @@ class Controller extends BaseController
             'payments', 'moneySpent', 'moneyEarned', 'saving',
             'banks',
             'averagePlus',
-            'note'
+            'note',
+            'user_id'
+        ));
+    }
+
+    public function settings()
+    {
+        $user_id = Auth::id();
+
+        // Payments
+        $banks = Bank::where('user_id', Auth::id())->whereNull('payment')->get();
+
+
+        // Expenses
+        $expenses = Expense::where('user_id', Auth::id())->get();
+
+        // Income
+        $income = Income::where('user_id', Auth::id())->get();
+
+
+        $user_id = Auth::id();
+
+        return view('settings', compact(
+            'expenses',
+            'income',
+            'banks', 'user_id'
+
         ));
     }
 

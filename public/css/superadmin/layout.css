@@ -1,0 +1,13 @@
+#superadmin {
+  background-color: #edeff0;
+}
+#superadmin .content {
+  padding-top: 5vh;
+  padding-left: 5vh;
+  padding-right: 5vh;
+}
+#superadmin .content .show .active {
+  background-color: gold;
+}
+
+/*# sourceMappingURL=layout.css.map */

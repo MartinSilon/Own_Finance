@@ -7,6 +7,7 @@ use App\Models\Bank;
 use App\Models\Expense;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExpensesController extends Controller
 {
@@ -24,7 +25,7 @@ class ExpensesController extends Controller
     // ---- GENERATING EDIT SCREEN ----
     public function edit(Expense $expense)
     {
-        $allExpenses = Expense::where('id', '!=', $expense->id)->get();
+        $allExpenses = Expense::where('user_id', Auth::id())->where('id', '!=', $expense->id)->get();
         return view('expense.edit', compact('expense', 'allExpenses'));
     }
 
@@ -56,7 +57,7 @@ class ExpensesController extends Controller
             'paid' => 'required',
         ]);
 
-        $bank = Bank::where('name', $expense->name)->first();
+        $bank = Bank::where('user_id', Auth::id())->where('name', $expense->name)->first();
 
         if($bank && $expense->name == $bank->name){
             $activeMoney = $bank->money;
@@ -71,7 +72,8 @@ class ExpensesController extends Controller
         $paymentPrice = -$expense->price;
         Payment::create([
             'name' => 'Mesačný príkaz: ' . $expense->name,
-            'price' => $paymentPrice
+            'price' => $paymentPrice,
+            'user_id' => Auth::id(),
         ]);
 
 

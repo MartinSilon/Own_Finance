@@ -16,7 +16,8 @@ class CreateIncomeRequest extends FormRequest
         return [
             'name' => 'required|string',
             'income' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
-            'date' => 'nullable|numeric'
+            'date' => 'nullable|numeric',
+            'user_id'=>'',
         ];
     }
 

@@ -1,39 +1,18 @@
-.payment {
-    h5 {
-        color: $blue;
-    }
+.paymentsShow{
+    .item{
+        border-radius: 0.8em;
+        background-color:rgba(255,255,255,0.1);
 
-    input, textarea {
-        font-size: 1.2em;
-        border: 1px solid $blue;
-        color: $blue;
-        font-family: medium;
-        &::placeholder {
-            color: $blue;
-            font-family: regular;
+        p{
+            color: white;
+            margin: 0px;
         }
-    }
-
-    .btn {
-        background-color: $blue;
-        color: $white;
-        border: 1px solid $blue;
-        font-size: 1.2em;
-        transition: 0.4s;
-        &:hover {
-            background-color: $blue;
-            color: $white;
+        h6, h5{
+            color: white;
         }
-    }
-
-    .lastPayment {
-        border: 1px solid $blue;
-        color: $blue;
-        h4 {
-            font-family: medium;
-        }
-        h6 {
-            font-family: regular;
+        .delete-button{
+            border-radius: 0.8em;
+            background-color: $pink;
         }
     }
 }

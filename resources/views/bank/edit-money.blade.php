@@ -2,17 +2,17 @@
 
 @section('body')
     @include('components/nav')
-    <section id="home" class="pt-1">
+    <section id="home" class="pt-1 formulars">
 
         <div class="container mt-2">
             <div class="row justify-content-center">
                 <div class="col-12 w-100">
                     {{-- ---- LIST OF SAVE ACCOUNTS ---- --}}
-                    <div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
+                    <div class="container rounded px-md-5 px-2 py-3 mt-1 shadow">
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="m-0 text-uppercase mb-2 title text-center">Úspory spolu:</h5>
-                                <h1 class="text-center ">{{ $bank->money !== NULL ? $bank->money : '0.00' }} €</h1>
+                                <h5 class="m-0 text-uppercase mb-2 title text-center text-white">Úspory spolu:</h5>
+                                <h1 class="text-center text-white">{{ $bank->money !== NULL ? $bank->money : '0.00' }} €</h1>
                                 @if($goal != NULL)
                                     <h5 class="text-center ">ostáva ešte <span class="" style="color: green">{{ $goal }} €</span></h5>
                                 @endif
@@ -22,57 +22,58 @@
                     </div>
 
                     {{-- ---- LIST OF SAVE ACCOUNTS ---- --}}
-                    <div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
+                    <div class="container rounded px-md-5 px-2 py-3 mt-1 shadow">
 
                         {{-- ---- ROW FOR FORM---- --}}
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <h3 class="text-uppercase mb-4 text-center">Pridať / Minúť financie:</h3>
+                                <h5 class="text-white text-uppercase mb-2 text-center">Pridať / Minúť financie:</h5>
 
                                 {{-- FORM --}}
                                 <form action="{{ route('updateBankMoney', $bank->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+                                    <input type="hidden" name="user_id" value="{{ $user_id }}">
                                     <input type="hidden" name="name" value="{{ $bank->name }}">
-                                    <input class="form-control mb-3" type="number" name="money" placeholder="+120" value="{{ old('money') }}" required>
+                                    <input class="form-control mb-4" type="number" name="money" placeholder="+120" value="{{ old('money') }}" required>
 
-                                    <button class="btn w-100 mt-3 text-uppercase" type="submit">Odoslať</button>
+                                    <button class="btn w-100 text-uppercase" type="submit">Odoslať</button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
                     {{-- ---- ADD NOTE TO BANK ---- --}}
-                    <div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
+                    <div class="container rounded px-md-5 px-2 py-3 mt-1 shadow">
 
                         {{-- ---- ROW FOR FORM---- --}}
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <h3 class="text-uppercase mb-4 text-center">Poznámky k banke:</h3>
+                                <h5 class="text-white text-uppercase mb-2 text-center">Poznámky k banke:</h5>
 
                                 {{-- FORM --}}
                                 <form action="{{ route('updateBankMoney', $bank->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <textarea class="form-control mb-3" name="note" rows="10" class="w-100">{{ $bank->note }}</textarea>
-                                    <button class="btn w-100 mt-3 text-uppercase" type="submit">Upraviť</button>
+                                    <textarea class="form-control mb-4" name="note" rows="10" class="w-100">{{ $bank->note }}</textarea>
+                                    <button class="btn w-100 text-uppercase" type="submit">Upraviť</button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
                     {{-- ---- ADD NOTE TO BANK ---- --}}
-                    <div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
+                    <div class="container rounded px-md-5 px-2 py-3 mt-1 shadow paymentsShow">
 
                         {{-- ---- ROW FOR FORM---- --}}
                         <div class="row">
                             <div class="col-12">
-                                <h3 class="text-uppercase mb-4 text-center">Platby:</h3>
+                                <h5 class="text-uppercase mb-2 text-center text-white">Platby:</h5>
                             </div>
                             @if($payments->isNotEmpty())
                                 @foreach($payments as $item)
-                                    <div class="col-12 swipe-container">
-                                        <div class="card mb-2 swipe-item">
+                                    <div class="col-12 swipe-container ">
+                                        <div class="card mb-2 swipe-item item">
                                             <div class="d-flex align-items-center justify-content-between position-relative">
 
                                                 {{-- Obsah karty --}}

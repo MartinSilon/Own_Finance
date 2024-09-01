@@ -1,0 +1,67 @@
+/* COLORS DEFINITION */
+.green {
+  color: #99d98c !important;
+}
+
+.red {
+  color: #ff6961 !important;
+}
+
+.pink {
+  color: #b3baff !important;
+}
+
+/* FONT IMPORT */
+@font-face {
+  font-family: "bold";
+  src: url("../fonts/Satoshi-Bold.ttf");
+}
+@font-face {
+  font-family: "medium";
+  src: url("../fonts/Satoshi-Medium.ttf");
+}
+@font-face {
+  font-family: "regular";
+  src: url("../fonts/Satoshi-Regular.ttf");
+}
+/* ANIMATIONS */
+@keyframes alerts {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+#superadmin .side-nav {
+  padding-top: 5vh;
+  width: 15vw;
+  max-width: 15vw;
+  height: 100vh;
+  background-color: #202b2f;
+}
+#superadmin .side-nav ul {
+  list-style: none;
+}
+#superadmin .side-nav ul li {
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  transition: 0.3s;
+}
+#superadmin .side-nav ul li:hover {
+  background-color: #2b3b42;
+}
+#superadmin .side-nav ul li svg {
+  margin-right: 10px;
+  height: 24px;
+  width: 24px;
+}
+
+/*# sourceMappingURL=side-nav.css.map */

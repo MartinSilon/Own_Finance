@@ -17,6 +17,7 @@ class CreateSaveAccRequest extends FormRequest
             'name' => 'required|string',
             'money' => 'required|numeric',
             'bank_id' => 'required',
+            'user_id'=>'',
         ];
     }
 

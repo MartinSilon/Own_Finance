@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bank', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->decimal('money', 8, 2);
-            $table->timestamps();
+        Schema::table('tips_and_tricks', function (Blueprint $table) {
+            $table->boolean('shown')->default(0);
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bank');
+        Schema::table('tips_and_tricks', function (Blueprint $table) {
+            $table->dropColumn('shown');
+        });
     }
 };

@@ -20,6 +20,7 @@ class CreateBankRequest extends FormRequest
             'name' => 'required|string',
             'money' => 'numeric',
             'goal'=>'',
+            'user_id'=>'',
         ];
     }
 

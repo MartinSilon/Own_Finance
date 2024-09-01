@@ -7,14 +7,10 @@ use App\Http\Requests\CreateIncomeRequest;
 use App\Models\Bank;
 use App\Models\Income;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BankController extends Controller
 {
-    // ---- GENERATING EDIT SCREEN ----
-    public function index()
-    {
-
-    }
 
     // ---- CREATE AND STORE A NEW BANK ----
     public function store(CreateBankRequest $request,)
@@ -25,6 +21,8 @@ class BankController extends Controller
             ->with('confirmMess', "Pridali ste banku do zoznamu.");
     }
 
+
+    // ---- UPDATE BANK ----
     public function update(Request $request, Bank $bank)
     {
         $data = $request->validate([
@@ -39,6 +37,9 @@ class BankController extends Controller
         return redirect()
             ->route('home');
     }
+
+
+    // ---- UPDATE MONEY AND CREATE A PAYMENT ----
     public function updateBankMoney(Request $request, Bank $bank)
     {
         $data = $request->validate([
@@ -47,6 +48,7 @@ class BankController extends Controller
         ], [
             'money.numeric' => "Suma je v zlom formáte.",
         ]);
+        // ak su vyplnene peniaze
         if (isset($data['money'])) {
             $paymentMoney = $data['money'];
             $activeMoney = $bank->money;
@@ -58,9 +60,12 @@ class BankController extends Controller
                     'name' => $bank->name,
                     'money' => $paymentMoney,
                     'payment' => true,
+                    'user_id' => Auth::id(),
                 ]);
             }
-        } else {
+        }
+        // ak je vyplnene note
+        if (isset($data['note'])) {
             $bank->update([
                 'note' => $data['note'],
             ]);
@@ -74,25 +79,37 @@ class BankController extends Controller
     // ---- GENERATING EDIT SCREEN ----
     public function edit(Bank $bank)
     {
-        $banks = Bank::where('name', '!=', $bank->name)->get();
+        
+        $banks = Bank::where('user_id', Auth::id())
+            ->where('id', '!=', $bank->id)
+            ->whereNull('payment')
+            ->get();
 
         return view('bank.edit', compact('bank', 'banks'));
     }
+
+
     // ---- GENERATING EDIT-MONEY SCREEN ----
     public function editMoney(Bank $bank)
     {
         if (!is_null($bank->goal) && !is_null($bank->money)) {
             $goal = $bank->goal - $bank->money;
+            if($goal < 0){
+                $goal = null;
+            }
         } else {
             $goal = null;
         }
 
         $payments = Bank::whereNotNull('payment')
+            ->where('user_id', Auth::id())
             ->where('name', $bank->name)
             ->orderBy('created_at', 'desc')
             ->get();
-        return view('bank.edit-money', compact('bank', 'payments', 'goal'));
+        $user_id = Auth::id();
+        return view('bank.edit-money', compact('bank', 'payments', 'goal', 'user_id'));
     }
+
 
     // ---- DELETING BANK ----
     public function destroy(Bank $bank)

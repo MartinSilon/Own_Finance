@@ -1,5 +1,17 @@
 @charset "UTF-8";
 /* COLORS DEFINITION */
+.green {
+  color: #99d98c !important;
+}
+
+.red {
+  color: #ff6961 !important;
+}
+
+.pink {
+  color: #b3baff !important;
+}
+
 /* FONT IMPORT */
 @font-face {
   font-family: "bold";
@@ -27,134 +39,194 @@
     visibility: hidden;
   }
 }
-#home {
-  min-height: 100vh;
-  background-color: #ffffff;
+.formulars h3 {
+  color: #ffffff;
 }
-#home a {
-  text-decoration: none;
-}
-#home .nav-tabs .nav-link {
-  color: #5a72cd;
-}
-#home .nav-tabs .not-home {
-  width: 25%;
-}
-#home .nav-tabs .home {
-  width: 50%;
-}
-#home .header h1, #home .header h5 {
-  color: #5a72cd;
-}
-#home .spareMoney .title {
-  color: #5a72cd;
-}
-#home .spareMoney .card {
+.formulars input {
+  border: 1px solid #b3baff;
   background-color: transparent;
-  border: 1px solid #5a72cd;
-  color: #5a72cd;
-}
-#home .spareMoney .active_card {
-  background: rgb(204, 224, 244);
-  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
-  border: 1px solid transparent;
   color: #ffffff;
 }
-#home .spareMoney .nonBtn {
-  border: none;
-  background-color: transparent !important;
-}
-#home #sumBanks {
-  background: rgb(204, 224, 244);
-  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
-}
-#home #sumBanks h5, #home #sumBanks h2 {
+.formulars input:focus {
+  border: 1px solid #b3baff;
+  background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
-#home #sumBanks .card {
-  border: #ffffff 1px solid;
-  height: 15vh;
+.formulars textarea {
+  border: 1px solid #b3baff;
+  background-color: transparent;
 }
-#home #sumBanks .accordion-body {
-  background-color: #5a72cd;
-}
-#home #sumBanks .accordion-button {
-  background-color: #5a72cd;
-  color: #5a72cd;
-}
-#home .payment h5 {
-  color: #5a72cd;
-}
-#home .payment input, #home .payment textarea {
-  font-size: 1.2em;
-  border: 1px solid #5a72cd;
-  color: #5a72cd;
-  font-family: medium;
-}
-#home .payment input::placeholder, #home .payment textarea::placeholder {
-  color: #5a72cd;
-  font-family: regular;
-}
-#home .payment .btn {
-  background-color: #5a72cd;
-  color: #ffffff;
-  border: 1px solid #5a72cd;
-  font-size: 1.2em;
-  transition: 0.4s;
-}
-#home .payment .btn:hover {
-  background-color: #5a72cd;
+.formulars textarea:focus {
+  border: 1px solid #b3baff;
+  background-color: #202020;
   color: #ffffff;
 }
-#home .payment .lastPayment {
-  border: 1px solid #5a72cd;
-  color: #5a72cd;
+.formulars button {
+  color: #000000;
+  background-color: #b3baff;
 }
-#home .payment .lastPayment h4 {
-  font-family: medium;
+.formulars label {
+  color: #b3baff;
 }
-#home .payment .lastPayment h6 {
-  font-family: regular;
+.formulars table thead th {
+  color: #b3baff;
 }
-#home .formulars h3 {
-  color: #5a72cd;
+.formulars table td {
+  color: #ffffff;
 }
-#home .formulars table thead th {
-  color: #5a72cd;
+.formulars table a {
+  color: #b3baff;
 }
 
-@media screen and (max-width: 400px) {
-  #home .nav-tabs .not-home {
-    width: 50%;
-  }
-  #home .nav-tabs .home {
-    width: 100%;
-  }
-  #home .formulars h3 {
-    color: #5a72cd;
-  }
-  #home .formulars table thead th {
-    color: #5a72cd;
-  }
-  #home .formulars table thead td {
-    padding: 0px !important;
-  }
-}
-#nav {
-  background-color: #ffffff;
-}
 #nav .logo {
   width: 5vw;
 }
+#nav .navbar-toggler {
+  border: 2px solid #000000;
+}
+#nav .navbar-toggler:focus {
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+#nav .navbar-nav ul {
+  flex-wrap: wrap-reverse;
+}
+#nav .navbar-nav .active {
+  color: #ffffff;
+  border-bottom: 1px solid #b3baff;
+}
+#nav .navbar-nav li a {
+  color: #ffffff;
+}
 
-@media screen and (max-width: 400px) {
-  #nav {
-    background-color: #ffffff;
-  }
+@media screen and (max-width: 500px) {
   #nav .logo {
-    width: 15vw;
+    width: 10vw;
   }
 }
+.paymentsShow .item {
+  border-radius: 0.8em;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.paymentsShow .item p {
+  color: white;
+  margin: 0px;
+}
+.paymentsShow .item h6, .paymentsShow .item h5 {
+  color: white;
+}
+.paymentsShow .item .delete-button {
+  border-radius: 0.8em;
+  background-color: #b3baff;
+}
+
+.expensesShow {
+  background-color: transparent;
+}
+.expensesShow button {
+  border: none;
+  background-color: transparent;
+}
+.expensesShow button .item {
+  border-radius: 0.8em;
+}
+.expensesShow button h3, .expensesShow button h6 {
+  color: #ffffff;
+}
+.expensesShow button h3 small, .expensesShow button h6 small {
+  color: #b3baff;
+}
+.expensesShow button h5 {
+  color: #b3baff;
+}
+
+.spareMoney {
+  background: rgb(179, 186, 255);
+  background: linear-gradient(360deg, rgb(179, 186, 255) 0%, rgb(77, 92, 179) 15%, rgb(63, 75, 146) 20%, rgb(46, 55, 108) 31%, rgb(26, 31, 62) 59%, rgb(0, 0, 3) 100%);
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spareMoney h1 {
+  font-size: 2em;
+  color: white;
+}
+.spareMoney p {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.details .box {
+  display: none !important;
+}
+.details .box.active {
+  display: flex !important;
+}
+.details .box {
+  background-color: #000000;
+  box-shadow: 3px 3px 5px 1px rgba(179, 186, 255, 0.32);
+  -webkit-box-shadow: 3px 3px 5px 1px rgba(179, 186, 255, 0.32);
+  -moz-box-shadow: 3px 3px 5px 1px rgba(179, 186, 255, 0.32);
+  width: 80vw;
+  height: 10vh;
+  color: #ffffff;
+  border-radius: 2em;
+  margin-top: -55px;
+}
+.details .box .icon {
+  height: 40px;
+  width: 40px;
+}
+
+.controls .text-center {
+  width: 33.3%;
+}
+.controls #prijat .modal-content, .controls #odoslat .modal-content {
+  height: 100vh;
+  color: white;
+  background-color: #000000 !important;
+  border-bottom: 1px solid #b3baff;
+}
+.controls #prijat .modal-content button, .controls #odoslat .modal-content button {
+  color: #000000;
+  background-color: #b3baff;
+  border: none;
+}
+.controls #prijat .modal-content input, .controls #odoslat .modal-content input {
+  border: none;
+  color: #ffffff;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid #b3baff;
+}
+.controls #prijat .modal-content .form-control:focus, .controls #odoslat .modal-content .form-control:focus {
+  box-shadow: none;
+  border-bottom: 1px solid #b3baff;
+}
+.controls #bank .modal-content {
+  height: 60vh;
+  color: white;
+  background-color: #000000 !important;
+}
+.controls #bank .modal-content button {
+  color: #000000;
+  background-color: #b3baff;
+  border: none;
+}
+.controls #bank .modal-content a {
+  border: 1px solid #b3baff;
+  border-radius: 0.8em;
+  height: 12vh;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.controls #bank .modal-content a h6, .controls #bank .modal-content a h4 {
+  color: #ffffff;
+  margin: 0px;
+}
+
 #login {
   background-color: #ffffff;
   background-size: cover;
@@ -199,59 +271,16 @@
     border: 1px solid #5a72cd;
   }
 }
-.header h1, .header h5 {
-  color: #5a72cd;
+body {
+  overflow-x: hidden;
+  width: 100vw;
+  background-color: #000000 !important;
 }
 
-.spareMoney .title {
-  color: #5a72cd;
-}
-.spareMoney .card {
-  background-color: transparent;
-  border: 1px solid #5a72cd;
-  color: #5a72cd;
-}
-.spareMoney .active_card {
-  background: rgb(204, 224, 244);
-  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
-  border: 1px solid transparent;
-  color: #ffffff;
-}
-.spareMoney .nonBtn {
-  border: none;
-  background-color: transparent !important;
+.row {
+  --bs-gutter-x: 0rem !important;
 }
 
-#sumBanks {
-  background: rgb(204, 224, 244);
-  background: linear-gradient(90deg, rgb(97, 124, 224) 71%, rgb(75, 95, 168) 100%);
-}
-#sumBanks h5, #sumBanks h2 {
-  color: #ffffff;
-}
-#sumBanks .card {
-  border: #ffffff 1px solid;
-  height: 15vh;
-}
-#sumBanks .accordion-body {
-  background-color: #5a72cd;
-}
-#sumBanks .accordion-button {
-  background-color: #5a72cd;
-  color: #5a72cd;
-}
-
-.chart canvas {
-  width: 25% !important;
-  height: 100% !important;
-}
-
-@media screen and (max-width: 400px) {
-  .chart canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
 * {
   font-family: regular;
 }

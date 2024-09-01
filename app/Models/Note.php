@@ -11,6 +11,7 @@ class Note extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'note',
     ];
     protected $table = 'notes';

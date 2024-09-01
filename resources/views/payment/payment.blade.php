@@ -2,10 +2,10 @@
 <div class="container bg-white rounded px-md-5 px-2 py-5 payment shadow mt-2">
     <div class="row justify-content-start">
         <div class="col-md-6 text-center">
-            <form id="paymentForm" action="{{ route('storePayment') }}" method="post" enctype="multipart/form-data">
+            <form id="paymentForm" action="{{ route('sentPayment') }}" method="post" enctype="multipart/form-data">
                 <p class="warning text-danger text-start"></p>
-
                 @csrf
+                <input type="hidden" name="user_id" value="{{ $user_id }}">
                 <input class="form-control mb-3 date" type="text" id="name" name="name" placeholder="Potraviny COOP" value="{{ old('name') }}" required>
                 <input class="form-control mb-3 date" type="text" name="price" placeholder="6.50" value="{{ old('price') }}" required>
 

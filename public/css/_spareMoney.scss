@@ -1,52 +1,92 @@
-.header {
-    h1, h5 {
-        color: $blue;
+.spareMoney{
+    background: rgb(179,186,255);
+    background: linear-gradient(360deg, rgba(179,186,255,1) 0%, rgba(77,92,179,1) 15%, rgba(63,75,146,1) 20%, rgba(46,55,108,1) 31%, rgba(26,31,62,1) 59%, rgba(0,0,3,1) 100%);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1{
+        font-size: 2em;
+        color: white;
+    }
+    p{
+        border: 1px solid rgba(255,255,255,0.1);
+        background-color:rgba(255,255,255,0.05)
     }
 }
 
-.spareMoney {
-    .title {
-        color: $blue;
-    }
-
-    .card {
-        background-color: transparent;
-        border: 1px solid $blue;
-        color: $blue;
-    }
-
-    .active_card {
-        background: rgb(204,224,244);
-        background: linear-gradient(90deg, rgba(97,124,224,1) 71%, rgba(75,95,168,1) 100%);
-        border: 1px solid transparent;
+.details{
+    .box { display: none !important;}
+    .box.active { display: flex !important; }
+    .box{
+        background-color: $black;
+        box-shadow: 3px 3px 5px 1px rgba(179,186,255,0.32);
+        -webkit-box-shadow: 3px 3px 5px 1px rgba(179,186,255,0.32);
+        -moz-box-shadow: 3px 3px 5px 1px rgba(179,186,255,0.32);
+        width: 80vw;
+        height: 10vh;
         color: $white;
-    }
-
-    .nonBtn {
-        border: none;
-        background-color: transparent !important;
-    }
-
-}
-
-
-#sumBanks{
-    background: rgb(204,224,244);
-    background: linear-gradient(90deg, rgba(97,124,224,1) 71%, rgba(75,95,168,1) 100%);
-    h5,h2{
-        color: $white;
-    }
-    .card{
-        border: $white 1px solid;
-        height: 15vh;
-
-    }
-    .accordion-body{
-        background-color: $blue;
-    }
-    .accordion-button{
-        background-color: $blue;
-        color: $blue;
+        border-radius: 2em;
+        margin-top: -55px;
+        .icon{
+            height: 40px;
+            width: 40px;
+        }
     }
 }
 
+.controls{
+    .text-center{
+        width: 33.3%;
+    }
+    #prijat, #odoslat{
+        .modal-content{
+            height: 100vh;
+            color: white;
+            background-color: $black !important;
+            border-bottom: 1px solid $pink;
+            button{
+                color: $black;
+                background-color: $pink;
+                border: none;
+            }
+            input{
+                border: none;
+                color: $white;
+                border-radius: 0px;
+                background-color: transparent;
+                border-bottom: 1px solid $pink;
+            }
+            .form-control:focus{
+                box-shadow: none;
+                border-bottom: 1px solid $pink;
+            }
+        }
+    }
+
+    #bank{
+        .modal-content{
+            height: 60vh;
+            color: white;
+            background-color: $black !important;
+            button{
+                color: $black;
+                background-color: $pink;
+                border: none;
+            }
+            a{
+                border: 1px solid $pink;
+                border-radius: 0.8em;
+                height: 12vh;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                h6, h4{
+                    color: $white;
+                    margin: 0px;
+                }
+            }
+        }
+    }
+
+}

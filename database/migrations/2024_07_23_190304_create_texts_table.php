@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bank', function (Blueprint $table) {
-            $table->decimal('money', 8, 2)->nullable();
+        Schema::create('texts', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('bank', function (Blueprint $table) {
-            $table->dropColumn('money');
-        });
+        Schema::dropIfExists('texts');
     }
 };

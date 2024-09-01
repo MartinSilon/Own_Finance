@@ -1,15 +1,35 @@
 #nav{
-    background-color: $white;
     .logo{
         width: 5vw;
     }
+    .navbar-toggler{
+        border: 2px solid $black;
+        &:focus{
+            border: 2px solid $black;
+            box-shadow: none;
+        }
+    }
+    .navbar-nav{
+        ul{
+            flex-wrap: wrap-reverse;
+        }
+        .active{
+            color: $white;
+            border-bottom: 1px solid $pink;
+
+        }
+        li{
+            a{
+                color: $white;
+            }
+        }
+    }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     #nav{
-        background-color: $white;
         .logo{
-            width: 15vw;
+            width: 10vw;
         }
     }
 }

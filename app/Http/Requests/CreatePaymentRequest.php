@@ -18,6 +18,7 @@ class CreatePaymentRequest extends FormRequest
             'name' => 'required|string',
             'price' => ['required', 'regex:/^[+-]?\d+(\.\d{1,2})?$/'],
             'note' => 'nullable|string',
+            'user_id'=>'',
         ];
     }
 

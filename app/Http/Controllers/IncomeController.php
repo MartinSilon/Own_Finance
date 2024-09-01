@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateIncomeRequest;
 use App\Models\Income;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller
 {
@@ -22,7 +23,9 @@ class IncomeController extends Controller
     // ---- GENERATING EDIT SCREEN ----
     public function edit(Income $income)
     {
-        $allIncome = Income::where('id', '!=', $income->id)->get();
+        $allIncome = Income::where('id', '!=', $income->id)
+            ->where('user_id', Auth::id())
+            ->get();
         return view('income.edit', compact('income', 'allIncome'));
     }
 

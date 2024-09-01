@@ -1,25 +1,50 @@
 
 {{-- ---- DETAILS ---- --}}
-<div class="spareMoney container bg-white rounded px-md-5 px-2 py-3 mt-1 shadow">
-    <div class="row">
-        <div class="col-12">
-            <h5 class="m-0 text-uppercase mb-2 title">Podrobnosti:</h5>
-        </div>
-    </div>
+<section id="home" class="">
+    @include('components/spareMoney')
 
-    {{-- ---- DETAILS CONTENT ---- --}}
-    <div class="row">
-        <div class="col-12 ms-2">
-            <h5>Denný príjem:
-                <span class="{{ $averagePlus > 0 ? 'text-success' : 'text-danger' }}">
-                    {{ $averagePlus }}€
-                </span> / deň
+    <div class="container details d-flex justify-content-center">
+
+        <div class="box d-flex justify-content-center align-items-center gap-3 active">
+            <div class="icon d-flex justify-content-center align-items-center rounded-circle p-3">
+                <i class="fa-solid fa-hippo fa-xl" style="color: #b3baff;"></i>
+            </div>
+            <h5 class="m-0">
+                <span class="pink" id="dynamic-text">+{{ $averagePlus }} €</span> / deň
             </h5>
-            <h5>Celkový príjem: {{ $incomeSum }} €</h5>
-            <h5>Počet príjmov: {{ $incomeCount }}</h5>
-            <h5>Mesačné výdavky: {{ $expensesSum }} €</h5>
-            <h5>Počet výdavkov: {{ $allExpensesCount }}</h5>
         </div>
-    </div>
-</div>
 
+        <div class="box d-flex justify-content-center align-items-center gap-3 ">
+            <div class="icon d-flex justify-content-center align-items-center rounded-circle p-3">
+                <i class="fa-solid fa-face-smile-beam fa-xl" style="color: #b3baff;"></i>
+            </div>
+            <h5 class="m-0">
+                <span class="pink" id="dynamic-text">+{{ $incomeSum }} €</span> / mesiac
+            </h5>
+        </div>
+
+        <div class="box d-flex justify-content-center align-items-center gap-3 ">
+            <div class="icon d-flex justify-content-center align-items-center rounded-circle p-3">
+                <i class="fa-solid fa-fire fa-xl" style="color: #b3baff;"></i>
+            </div>
+            <h5 class="m-0">
+                <span class="pink" id="dynamic-text">-{{ $expensesSum }} €</span> / mesiac
+            </h5>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const boxes = document.querySelectorAll('.box');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            boxes[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % boxes.length;
+            boxes[currentIndex].classList.add('active');
+        }, 5000);
+    });
+</script>
