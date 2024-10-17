@@ -14,8 +14,18 @@ class PaymentsController extends Controller
     // ---- CREATE AND STORE A NEW PAYMENT ----
     public function sent(CreatePaymentRequest $request)
     {
+
         $validatedData = $request->validated();
-        $validatedData['price'] = -$validatedData['price'];
+
+        $user_id = Auth::id();
+        $validatedData['user_id'] = $user_id;
+
+
+            if( isset($validatedData['currency']))
+                $validatedData['price'] =  $validatedData['price'] / -25;
+            else
+                $validatedData['price'] = -$validatedData['price'];
+
 
         Payment::create($validatedData);
 

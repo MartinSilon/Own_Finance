@@ -1,11 +1,9 @@
 @extends('components.head')
 
 @section('body')
+
     <section id="login">
         <div class="container-fluid con-window">
-            <div class="logo-login fixed-top">
-                @include('components/nav')
-            </div>
 
             <div class="row justify-content-center">
 

@@ -6,6 +6,11 @@
 
         .item{
             border-radius: 0.8em;
+            border: 1px solid $white;
+        }
+        h5{
+            font-size: 1.2em !important;
+            color: $pink;
         }
         h3, h6{
             color: $white;
@@ -13,9 +18,43 @@
                 color: $pink;
             }
         }
-        h5{
-            color: $pink;
+        h6{
+            font-size: 0.8em;
         }
     }
 
+    .background-special{
+        .item{
+            border-radius: 0.8em;
+            border: 1px solid $pink;
+
+        }
+    }
+}
+
+
+.plannedPaymentsShow{
+    .title{
+        color: $pink;
+    }
+
+    .col-12{
+        border: 1px solid $pink;
+        border-radius: 0.8em;
+        svg{
+            height: 30px;
+        }
+        p{
+
+            color: $white;
+        }
+        .delete-button{
+            border-radius: 0.8em;
+            background-color: $pink;
+        }
+        form{
+            border-radius: 0.8em;
+            background-color: $pink;
+        }
+    }
 }

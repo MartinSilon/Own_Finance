@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tips_and_tricks', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->boolean('only_once')->default(false)->after('paid');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tips_and_tricks');
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->dropColumn('only_once');
+        });
     }
 };

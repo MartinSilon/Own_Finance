@@ -9,6 +9,7 @@
                 <input class="form-control mb-3 date" type="text" id="name" name="name" placeholder="Potraviny COOP" value="{{ old('name') }}" required>
                 <input class="form-control mb-3 date" type="text" name="price" placeholder="6.50" value="{{ old('price') }}" required>
 
+
                 <button class="btn w-100 mt-3 text-uppercase" type="submit">Odoslať</button>
             </form>
         </div>

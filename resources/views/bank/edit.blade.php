@@ -8,7 +8,7 @@
         {{-- FORM FOR EDITING EXPENSE --}}
         <div class=" formulars container rounded px-lg-5 py-lg-5 py-4 payment mt-2 shadow">
             <div class="row justify-content-start">
-                <div class="col-md-6">
+                <div class="col-md-6 pe-5">
                     <h3 class="m-0 text-uppercase mb-2 date mb-4">Upraviť banku:</h3>
 
                     {{-- Form --}}

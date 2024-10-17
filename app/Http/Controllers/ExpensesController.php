@@ -16,6 +16,7 @@ class ExpensesController extends Controller
     public function store(CreateExpenseRequest $request)
     {
         Expense::create($request->validated());
+
         return redirect()
             ->route("home")
             ->with('confirmMess', "Vytvorili ste nový mesačný príkaz.");
@@ -25,7 +26,7 @@ class ExpensesController extends Controller
     // ---- GENERATING EDIT SCREEN ----
     public function edit(Expense $expense)
     {
-        $allExpenses = Expense::where('user_id', Auth::id())->where('id', '!=', $expense->id)->get();
+        $allExpenses = Expense::where('user_id', Auth::id())->where('id', '!=', $expense->id)->where('only_once', false)->get();
         return view('expense.edit', compact('expense', 'allExpenses'));
     }
 
@@ -58,7 +59,6 @@ class ExpensesController extends Controller
         ]);
 
         $bank = Bank::where('user_id', Auth::id())->where('name', $expense->name)->first();
-
         if($bank && $expense->name == $bank->name){
             $activeMoney = $bank->money;
             $money = $activeMoney + $expense->price;
@@ -70,12 +70,19 @@ class ExpensesController extends Controller
 
         //Vytvorenie Platby
         $paymentPrice = -$expense->price;
-        Payment::create([
-            'name' => 'Mesačný príkaz: ' . $expense->name,
-            'price' => $paymentPrice,
-            'user_id' => Auth::id(),
-        ]);
-
+        if($expense->only_once){
+            Payment::create([
+                'name' => 'Planované: ' . $expense->name,
+                'price' => $paymentPrice,
+                'user_id' => Auth::id(),
+            ]);
+        }else{
+            Payment::create([
+                'name' => 'Mesačný príkaz: ' . $expense->name,
+                'price' => $paymentPrice,
+                'user_id' => Auth::id(),
+            ]);
+        }
 
         return redirect()
             ->route('home');
@@ -85,7 +92,11 @@ class ExpensesController extends Controller
     // ---- RESET ALL EXPENSES ----
     public function setAllPaidToNull()
     {
-        Expense::query()->update(['paid' => null]);
+        Expense::query()
+            ->where('user_id', Auth::id())
+            ->where('only_once', false)
+            ->whereNotNull('id')
+            ->update(['paid' => null]);
 
         return redirect()
             ->route('home')

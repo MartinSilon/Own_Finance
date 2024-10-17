@@ -1,7 +1,7 @@
 {{-- ---- FORM FOR ADDING INCOME ---- --}}
 <div class="formulars container rounded px-md-5 px-4 pt-4 py-md-5 payment mt-2 shadow">
     <div class="row justify-content-start">
-        <div class="col-md-6">
+        <div class="col-md-6 pe-md-5">
             <h3 class="text-uppercase mb-4">Pridať príjem:</h3>
 
             {{-- FORM --}}
@@ -48,8 +48,9 @@
                                     </svg>
                                 </button>
                             </form>
-                            <form action="{{ route('sentPayment') }}" method="post" class="d-inline">
+                            <form action="{{ route('recievePayment') }}" method="post" class="d-inline">
                                 @csrf
+                                <input type="hidden" name="user_id" value="{{$user_id}}">
                                 <input type="hidden" name="name" value="Príjem: {{ $item->name }}">
                                 <input type="hidden" name="price" value="+{{ $item->income }}">
                                 <button type="submit" class="border-0 btn-sm ms-1">

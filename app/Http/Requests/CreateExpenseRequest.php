@@ -19,6 +19,7 @@ class CreateExpenseRequest extends FormRequest
             'price' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
             'date' => 'nullable|numeric',
             'user_id'=>'',
+            'only_once'=>''
         ];
     }
 

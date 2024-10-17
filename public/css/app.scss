@@ -31,7 +31,10 @@ body{
     animation: alerts 3s ;
     visibility: hidden;
 }
-
+.nonBtn{
+    background-color: transparent;
+    border: none;
+}
 
 .swipe-container {
     overflow: hidden;
@@ -67,7 +70,7 @@ body{
 }
 
 .swipe-item.swiped .card-content {
-    padding-right: 50px; /* Vytvoríme miesto pre tlačidlo pri swipe */
+    padding-right: 50px;
 }
 
 

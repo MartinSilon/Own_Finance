@@ -1,7 +1,7 @@
 {{-- ---- FORM FOR ADDING EXPENSE  ---- --}}
 <div class="formulars container rounded px-md-5 px-4 pt-4 py-md-5 payment mt-2 shadow">
     <div class="row justify-content-start">
-        <div class="col-md-6 mb-md-0 mb-2 pe-md-5">
+        <div class="col-md-6 mb-md-0 mb-2">
             <h3 class="text-uppercase mb-4">Pridať mesačnú platbu:</h3>
 
             {{-- FORM --}}

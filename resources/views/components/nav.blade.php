@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light pt-3 px-2" id="nav">
+<nav class="navbar navbar-expand-lg pt-3 px-2" id="nav">
     <div class="container-fluid">
 
         <button class="navbar-toggler rounded-circle p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <div style="width: 15px; height: 15px">
-                <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-caret-down" style="color: #b3baff;"></i>
             </div>
         </button>
 
@@ -18,6 +18,12 @@
                     <a class="nav-link text-uppercase" href="/settings" role="tab" aria-controls="settings0" aria-selected="false">
                         <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
                         Nastavenia
+                    </a>
+                </li>
+
+                <li class="nav-item" id="settings-nav-item">
+                    <a class="nav-link text-uppercase pink" href="/logout" role="tab" aria-controls="settings0" aria-selected="false">
+                        Logout
                     </a>
                 </li>
 
